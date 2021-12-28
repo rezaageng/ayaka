@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const TOKEN = "ODk2NjI2NjY5NDg0NDAwNjYy.YWJ2qA.uLH-mDg6OAQrTtCvEJdlKCvE2CE"
+const {TOKEN} = require('./config.json')
 const client = new Discord.Client({
     intents: ["GUILDS", "GUILD_MESSAGES"]
 })
