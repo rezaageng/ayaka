@@ -1,0 +1,58 @@
+const Canvas = require("canvas")
+const Discord = require("discord.js")
+
+const background = "https://i.imgur.com/lHOV1fj.png"
+
+const dim = {
+    width: 1200,
+    height: 675,
+}
+
+const Avatar = {
+    size: 256,
+    x: 480,
+    y: 170
+}
+
+const generateImage = async (member) => {
+    let username = member.user.username
+    let discrim = member.user.discriminator
+    let avatarURL = member.user.displayAvatarURL({format: "png", dynamic: false, size: Avatar.size})
+
+    const canvas = Canvas.createCanvas(dim.width, dim.height)
+    const ctx = canvas.getContext("2d")
+
+    const bgImg = await Canvas.loadImage(background)
+    ctx.drawImage(bgImg, 0, 0)
+
+    ctx.fillStyle = "rgba(0, 0, 0, 0.5)"
+    ctx.fillRect(0, 0, dim.width, dim.height)
+
+    const avImg = await Canvas.loadImage(avatarURL)
+    ctx.save()
+
+    ctx.beginPath()
+    ctx.arc(Avatar.x + Avatar.size / 2, Avatar.y + Avatar.size / 2, Avatar.size / 2, 0, Math.PI * 2, true)
+    ctx.closePath()
+    ctx.clip()
+
+    ctx.drawImage(avImg, Avatar.x, Avatar.y)
+    ctx.restore()
+
+    ctx.fillStyle = "white"
+    ctx.textAlign = "center"
+
+    ctx.font = "50px bebas-neue"
+    ctx.fillText("WELCOME", dim.width / 2, 120)
+
+    ctx.font = "60px bebas-neue"
+    ctx.fillText(username + discrim, dim.width / 2, 500)
+
+    ctx.font = "40px bebas-neue"
+    ctx.fillText("Have a nice day :D", dim.width / 2, 550)
+
+    const attachement = new Discord.MessageAttachment(canvas.toBuffer(), "welcome.png")
+    return attachement
+}
+
+module.exports = generateImage
