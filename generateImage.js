@@ -42,13 +42,13 @@ const generateImage = async (member) => {
     ctx.fillStyle = "white"
     ctx.textAlign = "center"
 
-    ctx.font = "50px bebas-neue"
-    ctx.fillText("WELCOME", dim.width / 2, 120)
+    ctx.font = "70px 'Coolvetica Rg'"
+    ctx.fillText("WELCOME", dim.width / 2, 130)
 
-    ctx.font = "60px bebas-neue"
-    ctx.fillText(username + discrim, dim.width / 2, 500)
+    ctx.font = "60px 'Coolvetica Rg'"
+    ctx.fillText(`${username}#${discrim}`, dim.width / 2, 500)
 
-    ctx.font = "40px bebas-neue"
+    ctx.font = "40px 'Coolvetica Rg'"
     ctx.fillText("Have a nice day :D", dim.width / 2, 550)
 
     const attachement = new Discord.MessageAttachment(canvas.toBuffer(), "welcome.png")
