@@ -11,13 +11,17 @@ const dim = {
 const Avatar = {
     size: 256,
     x: 480,
-    y: 170
+    y: 170,
 }
 
 const generateImage = async (member) => {
     let username = member.user.username
     let discrim = member.user.discriminator
-    let avatarURL = member.user.displayAvatarURL({format: "png", dynamic: false, size: Avatar.size})
+    let avatarURL = member.user.displayAvatarURL({
+        format: "png",
+        dynamic: false,
+        size: Avatar.size,
+    })
 
     const canvas = Canvas.createCanvas(dim.width, dim.height)
     const ctx = canvas.getContext("2d")
@@ -32,7 +36,14 @@ const generateImage = async (member) => {
     ctx.save()
 
     ctx.beginPath()
-    ctx.arc(Avatar.x + Avatar.size / 2, Avatar.y + Avatar.size / 2, Avatar.size / 2, 0, Math.PI * 2, true)
+    ctx.arc(
+        Avatar.x + Avatar.size / 2,
+        Avatar.y + Avatar.size / 2,
+        Avatar.size / 2,
+        0,
+        Math.PI * 2,
+        true
+    )
     ctx.closePath()
     ctx.clip()
 
@@ -51,7 +62,10 @@ const generateImage = async (member) => {
     ctx.font = "40px 'Coolvetica Rg'"
     ctx.fillText("Have a nice day :D", dim.width / 2, 550)
 
-    const attachement = new Discord.MessageAttachment(canvas.toBuffer(), "welcome.png")
+    const attachement = new Discord.MessageAttachment(
+        canvas.toBuffer(),
+        "welcome.png"
+    )
     return attachement
 }
 
