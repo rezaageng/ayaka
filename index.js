@@ -8,6 +8,10 @@ const client = new Discord.Client({
 
 client.on("ready", () => {
     console.log(`${client.user.tag} is here :D`)
+    client.user.setActivity("You ｏ(≧▼≦○〃", { type: "WATCHING" })
+    require("http")
+        .createServer((req, res) => res.end(`${client.user.tag} is here :D`))
+        .listen(3000)
 })
 
 client.on("messageCreate", (msg) => {
