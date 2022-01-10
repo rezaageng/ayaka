@@ -4,7 +4,8 @@
   "description": "first discord bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +13,17 @@
     "canvas": "^2.8.0",
     "discord.js": "^13.4.0",
     "dotenv": "^10.0.0"
-  }
+  },
+  "devDependencies": {
+    "node": "^16.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rezaageng/ayaka.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/rezaageng/ayaka/issues"
+  },
+  "homepage": "https://github.com/rezaageng/ayaka#readme"
 }
