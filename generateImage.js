@@ -14,6 +14,13 @@ const Avatar = {
     y: 170,
 }
 
+const { registerFont } = require("canvas")
+
+registerFont("./assets/fonts/coolvetica rg.otf", { family: "sans-serif" })
+registerFont("./assets/fonts/MochiyPopOne-Regular.ttf", {
+    family: "sans-serif",
+})
+
 const generateImage = async (member) => {
     const regex =
         /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f]/
@@ -23,11 +30,6 @@ const generateImage = async (member) => {
         format: "png",
         dynamic: false,
         size: Avatar.size,
-    })
-
-    registerFont("./assets/fonts/coolvetica rg.otf", { family: "sans-serif" })
-    registerFont("./assets/fonts/MochiyPopOne-Regular.ttf", {
-        family: "sans-serif",
     })
 
     const canvas = Canvas.createCanvas(dim.width, dim.height)
