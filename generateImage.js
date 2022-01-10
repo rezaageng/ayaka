@@ -15,6 +15,8 @@ const Avatar = {
 }
 
 const generateImage = async (member) => {
+    const regex =
+        /[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f]/
     let username = member.user.username
     let discrim = member.user.discriminator
     let avatarURL = member.user.displayAvatarURL({
@@ -55,8 +57,10 @@ const generateImage = async (member) => {
 
     ctx.font = "70px 'Coolvetica Rg'"
     ctx.fillText("WELCOME", dim.width / 2, 130)
+    username.match(regex)
+        ? (ctx.font = "60px 'Mochiy Pop One'")
+        : (ctx.font = "60px 'Coolvetica Rg'")
 
-    ctx.font = "60px 'Coolvetica Rg'"
     ctx.fillText(`${username}#${discrim}`, dim.width / 2, 500)
 
     ctx.font = "40px 'Coolvetica Rg'"
