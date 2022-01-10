@@ -25,6 +25,11 @@ const generateImage = async (member) => {
         size: Avatar.size,
     })
 
+    registerFont("./assets/fonts/coolvetica rg.otf", { family: "sans-serif" })
+    registerFont("./assets/fonts/MochiyPopOne-Regular.ttf", {
+        family: "sans-serif",
+    })
+
     const canvas = Canvas.createCanvas(dim.width, dim.height)
     const ctx = canvas.getContext("2d")
 
