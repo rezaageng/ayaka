@@ -59,7 +59,7 @@ const generateImage = async (member) => {
     ctx.fillText("WELCOME", dim.width / 2, 130)
 
     username.match(regex)
-        ? (ctx.font = "60px 'Mochiy Pop One'")
+        ? (ctx.font = "50px 'Mochiy Pop One'")
         : (ctx.font = "60px 'Coolvetica Rg'")
     ctx.fillText(`${username}#${discrim}`, dim.width / 2, 500)
 
