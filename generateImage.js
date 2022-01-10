@@ -15,10 +15,10 @@ const Avatar = {
 }
 
 Canvas.registerFont("./assets/fonts/coolvetica rg.otf", {
-    family: "sans-serif",
+    family: "Coolvetica Rg",
 })
 Canvas.registerFont("./assets/fonts/MochiyPopOne-Regular.ttf", {
-    family: "sans-serif",
+    family: "Mochiy Pop One",
 })
 
 const generateImage = async (member) => {
