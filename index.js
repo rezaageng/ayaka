@@ -13,7 +13,7 @@ client.on("ready", () => {
 
 client.on("messageCreate", (msg) => {
     if (msg.content == "hi") {
-        msg.reply("halo sayang <3")
+        msg.reply("hii <3")
     }
 })
 
