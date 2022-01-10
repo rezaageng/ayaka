@@ -1,7 +1,6 @@
 const Discord = require("discord.js")
 require("dotenv").config()
 const generateImage = require("./generateImage")
-let usernamex = "ayase"
 
 const client = new Discord.Client({
     intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"],
