@@ -14,10 +14,10 @@ const Avatar = {
     y: 170,
 }
 
-const { registerFont } = require("canvas")
-
-registerFont("./assets/fonts/coolvetica rg.otf", { family: "sans-serif" })
-registerFont("./assets/fonts/MochiyPopOne-Regular.ttf", {
+Canvas.registerFont("./assets/fonts/coolvetica rg.otf", {
+    family: "sans-serif",
+})
+Canvas.registerFont("./assets/fonts/MochiyPopOne-Regular.ttf", {
     family: "sans-serif",
 })
 
