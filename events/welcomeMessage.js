@@ -1,6 +1,6 @@
 const Canvas = require("canvas")
 const Discord = require("discord.js")
-const welcomeChId = "925298083556888586"
+const welcomeChId = "883715121019486240"
 
 const background = "https://i.imgur.com/lHOV1fj.png"
 
@@ -81,7 +81,6 @@ module.exports = {
             "welcome.png"
         )
 
-        // const img = await generateImage(member)
         member.guild.channels.cache.get(welcomeChId).send({
             content: `<@${member.id}> welcome to the server :D`,
             files: [attachement],
