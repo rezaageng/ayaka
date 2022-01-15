@@ -14,4 +14,9 @@ let bot = {
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()
 
+client.loadEvents = (bot, reload) => require("./handlers/events")(bot, reload)
+client.loadEvents(bot, false)
+
 module.exports = bot
+
+client.login(process.env.TOKEN)
