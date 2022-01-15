@@ -1,6 +1,6 @@
 module.exports = {
     name: "messageCreate",
-    run: async function runAll(bot, message) {
+    run: async (bot, message) => {
         const { client, prefix, owners } = bot
 
         if (!message.guild) return
