@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const { DisTube } = require("distube")
+const { Player } = require("discord-player")
 require("dotenv").config()
 
 const client = new Discord.Client({
@@ -12,13 +12,7 @@ let bot = {
   owners: "465403883469012992",
 }
 
-client.distube = new DisTube(client, {
-  searchSongs: 10,
-  searchCooldown: 30,
-  leaveOnEmpty: false,
-  leaveOnFinish: false,
-  leaveOnStop: false,
-})
+client.player = new Player(client)
 
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()
