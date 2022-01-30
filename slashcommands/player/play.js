@@ -54,6 +54,7 @@ module.exports = {
         requestedBy: interaction.user,
       })
       .then((x) => x.tracks[0])
+
     if (!track)
       return await interaction.followUp({
         content: `❌ | Track **${query}** not found!`,
