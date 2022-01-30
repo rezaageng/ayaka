@@ -1,22 +1,24 @@
 module.exports = {
   name: "play",
   description: "Play music",
+  category: "player",
   permissions: [],
   devOnly: false,
   options: [
     {
-      name: "query",
+      name: "song",
       type: "STRING",
       description: "The song you want to play",
       required: true,
     },
   ],
-  run: async ({ client, interaction, args }) => {
+  run: async ({ client, interaction }) => {
     if (!interaction.member.voice.channelId)
       return await interaction.reply({
         content: "You are not in a voice channel!",
         ephemeral: true,
       })
+
     if (
       interaction.guild.me.voice.channelId &&
       interaction.member.voice.channelId !==
@@ -26,7 +28,8 @@ module.exports = {
         content: "You are not in my voice channel!",
         ephemeral: true,
       })
-    const query = interaction.options.get("query").value
+
+    const query = interaction.options.get("song").value
     const queue = client.player.createQueue(interaction.guild, {
       metadata: {
         channel: interaction.channel,

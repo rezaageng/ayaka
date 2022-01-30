@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
   name: "ping",
   description: "Ping ayaka",
+  category: "client",
   permissions: [],
   devOnly: false,
   run: async ({ client, interaction, args }) => {

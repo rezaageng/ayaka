@@ -1,19 +1,25 @@
 const { getFiles } = require("../util/functions")
+const fs = require("fs")
 
 module.exports = (bot, reload) => {
   const { client } = bot
-  let slashcommands = getFiles("./slashcommands/", ".js")
 
-  if (slashcommands.length === 0) {
-    console.log("No slash commands loaded :(")
-  }
+  fs.readdirSync("./slashcommands/").forEach((category) => {
+    let slashcommands = getFiles(`./slashcommands/${category}`, ".js")
 
-  slashcommands.forEach((f) => {
-    if (reload) {
-      delete require.cache[require.resolve(`../slashcommands/${f}`)]
+    if (slashcommands.length === 0) {
+      console.log("No slash commands loaded :(")
     }
 
-    const slashcmd = require(`../slashcommands/${f}`)
-    client.slashcommands.set(slashcmd.name, slashcmd)
+    slashcommands.forEach((f) => {
+      if (reload) {
+        delete require.cache[
+          require.resolve(`../slashcommands/${category}/${f}`)
+        ]
+      }
+
+      const slashcmd = require(`../slashcommands/${category}/${f}`)
+      client.slashcommands.set(slashcmd.name, slashcmd)
+    })
   })
 }
