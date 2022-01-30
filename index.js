@@ -1,8 +1,9 @@
 const Discord = require("discord.js")
+const { DisTube } = require("distube")
 require("dotenv").config()
 
 const client = new Discord.Client({
-  intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"],
+  intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_VOICE_STATES"],
 })
 
 let bot = {
@@ -10,6 +11,14 @@ let bot = {
   prefix: "ay.",
   owners: "465403883469012992",
 }
+
+client.distube = new DisTube(client, {
+  searchSongs: 10,
+  searchCooldown: 30,
+  leaveOnEmpty: false,
+  leaveOnFinish: false,
+  leaveOnStop: false,
+})
 
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()
