@@ -6,7 +6,8 @@ module.exports = {
   devOnly: false,
   run: async ({ client, interaction }) => {
     const queue = client.player.getQueue(interaction.guild.id)
-    const track = queue.previousTracks[0]
+    const track = queue.tracks[0]
+    const previousTrack = queue.previousTracks[queue.previousTracks.length - 1]
 
     if (
       interaction.guild.me.voice.channelId &&
@@ -27,7 +28,7 @@ module.exports = {
     queue.skip()
 
     return interaction.reply(
-      `**${track.title}** skipped by <@${track.requestedBy.id}>`
+      `**${previousTrack.title}** skipped by <@${track.requestedBy.id}>`
     )
   },
 }
