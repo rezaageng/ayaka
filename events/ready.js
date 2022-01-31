@@ -13,7 +13,7 @@ module.exports = {
     await guild.commands.set([...client.slashcommands.values()])
 
     console.log(`Loaded ${client.slashcommands.size} slash command`)
-    console.log(`${bot.client.user.tag} is here :D`)
+    console.log(`${client.user.tag} is here :D`)
     bot.client.user.setActivity("You ｏ(≧▼≦○〃", { type: "WATCHING" })
   },
 }
