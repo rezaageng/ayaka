@@ -6,7 +6,7 @@ module.exports = {
   devOnly: false,
   run: async ({ client, interaction }) => {
     const queue = client.player.getQueue(interaction.guild.id)
-    const track = queue.tracks[0]
+    const track = queue.previousTracks[0]
 
     if (
       interaction.guild.me.voice.channelId &&
