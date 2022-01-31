@@ -1,5 +1,3 @@
-const { MessageEmbed } = require("discord.js")
-
 module.exports = {
   name: "disconnect",
   description: "Skip song",
@@ -8,7 +6,6 @@ module.exports = {
   devOnly: false,
   run: async ({ client, interaction }) => {
     const queue = client.player.getQueue(interaction.guild.id)
-    const track = queue.tracks[0]
 
     if (
       interaction.guild.me.voice.channelId &&
@@ -20,12 +17,8 @@ module.exports = {
         ephemeral: true,
       })
 
-    const disconnect = new MessageEmbed()
-      .setColor("#ff1100")
-      .setTitle(`**${client.user.tag}** disconnected`)
-
     queue.destroy()
 
-    return interaction.reply({ embeds: [disconnect] })
+    return interaction.reply(`${client.user.tag} disconnected`)
   },
 }
