@@ -62,4 +62,12 @@ function initEvents(bot) {
   client.player.on("trackStart", (queue, track) => {
     triggerEventHandler(bot, "trackStart", queue, track)
   })
+
+  client.player.on("error", (queue, error) => {
+    triggerEventHandler(bot, "error", queue, error)
+  })
+
+  client.player.on("connectionError", (queue, error) => {
+    triggerEventHandler(bot, "connectionError", queue, error)
+  })
 }
