@@ -1,6 +1,6 @@
 module.exports = {
   name: "disconnect",
-  description: "Skip song",
+  description: "please dont disconnect me from voice channel",
   cattegory: "player",
   permissions: [],
   devOnly: false,
