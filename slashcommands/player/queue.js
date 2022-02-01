@@ -16,8 +16,13 @@ module.exports = {
   ],
   run: async ({ client, interaction }) => {
     const queue = client.player.getQueue(interaction.guild.id)
-
     let page = (await interaction.options.getNumber("page", false)) ?? 1
+
+    if (!queue)
+      return await interaction.reply({
+        content: "Queue not found!",
+        ephemeral: true,
+      })
 
     if (
       interaction.guild.me.voice.channelId &&

@@ -16,6 +16,12 @@ module.exports = {
     const queue = client.player.getQueue(interaction.guild.id)
     let index = await interaction.options.getNumber("index", true)
 
+    if (!queue)
+      return await interaction.reply({
+        content: "Queue not found!",
+        ephemeral: true,
+      })
+
     if (
       interaction.guild.me.voice.channelId &&
       interaction.member.voice.channelId !==
