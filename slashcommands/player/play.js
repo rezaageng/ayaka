@@ -48,6 +48,10 @@ module.exports = {
     } else {
       queue = await client.player.createQueue(interaction.guild, {
         metadata: interaction,
+        leaveOnEnd: false,
+        leaveOnStop: false,
+        leaveOnEmpty: true,
+        leaveOnEmptyCooldown: 60000,
       })
     }
 

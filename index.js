@@ -12,12 +12,7 @@ let bot = {
   owners: "465403883469012992",
 }
 
-client.player = new Player(client, {
-  leaveOnEnd: false,
-  leaveOnStop: false,
-  leaveOnEmpty: true,
-  leaveOnEmptyCooldown: 60000,
-})
+client.player = new Player(client)
 
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()
