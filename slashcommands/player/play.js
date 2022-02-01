@@ -32,6 +32,7 @@ module.exports = {
     const query = interaction.options.get("song").value
     const guildQueue = client.player.getQueue(interaction.guild.id)
 
+    await interaction.deferReply()
     let result = await client.player
       .search(query, { requestedBy: interaction.user })
       .catch(() => {})
@@ -67,7 +68,7 @@ module.exports = {
 
     if (!queue.playing) await queue.play()
 
-    return await interaction.reply({
+    return await interaction.followUp({
       content: `Loading track **${result.tracks[0].title}**!`,
     })
   },
