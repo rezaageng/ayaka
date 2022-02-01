@@ -6,6 +6,13 @@ module.exports = {
   devOnly: false,
   run: async ({ client, interaction }) => {
     const queue = client.player.getQueue(interaction.guild.id)
+
+    if (!queue)
+      return await interaction.reply({
+        content: "Queue not found!",
+        ephemeral: true,
+      })
+
     const previousTrack = queue.previousTracks[queue.previousTracks.length - 1]
 
     if (

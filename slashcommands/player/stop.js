@@ -1,11 +1,17 @@
 module.exports = {
-  name: "disconnect",
-  description: "please dont disconnect me from voice channel",
+  name: "stop",
+  description: "Stop playing song",
   cattegory: "player",
   permissions: [],
   devOnly: false,
   run: async ({ client, interaction }) => {
     const queue = client.player.getQueue(interaction.guild.id)
+
+    if (!queue)
+      return await interaction.reply({
+        content: "Queue not found!",
+        ephemeral: true,
+      })
 
     if (
       interaction.guild.me.voice.channelId &&
@@ -17,8 +23,8 @@ module.exports = {
         ephemeral: true,
       })
 
-    queue.destroy()
+    queue.stop()
 
-    return await interaction.reply(`${client.user.tag} disconnected`)
+    return await interaction.reply(`Stopped playing music`)
   },
 }

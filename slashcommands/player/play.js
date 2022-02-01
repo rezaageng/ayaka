@@ -1,6 +1,6 @@
 module.exports = {
   name: "play",
-  description: "Play music",
+  description: "Play song",
   category: "player",
   permissions: [],
   devOnly: false,
@@ -48,6 +48,10 @@ module.exports = {
     } else {
       queue = await client.player.createQueue(interaction.guild, {
         metadata: interaction,
+        leaveOnEnd: false,
+        leaveOnStop: true,
+        leaveOnEmpty: true,
+        leaveOnEmptyCooldown: 60000,
       })
     }
 
