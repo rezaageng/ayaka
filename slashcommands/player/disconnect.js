@@ -1,12 +1,11 @@
 module.exports = {
-  name: "skip",
-  description: "Skip song",
+  name: "disconnect",
+  description: "please dont disconnect me from voice channel",
   cattegory: "player",
   permissions: [],
   devOnly: false,
   run: async ({ client, interaction }) => {
     const queue = client.player.getQueue(interaction.guild.id)
-    const previousTrack = queue.previousTracks[queue.previousTracks.length - 1]
 
     if (
       interaction.guild.me.voice.channelId &&
@@ -18,16 +17,8 @@ module.exports = {
         ephemeral: true,
       })
 
-    if (queue.tracks.length < 1 && queue.repeatMode !== 3)
-      return await interaction.reply({
-        content: "No more songs in the queue to skip.",
-        ephemeral: false,
-      })
+    queue.destroy()
 
-    queue.skip()
-
-    return await interaction.reply(
-      `**${previousTrack.title}** skipped by <@${interaction.user.id}>`
-    )
+    return await interaction.reply(`${client.user.tag} disconnected`)
   },
 }

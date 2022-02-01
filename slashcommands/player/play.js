@@ -30,17 +30,30 @@ module.exports = {
       })
 
     const query = interaction.options.get("song").value
-    const queue = client.player.createQueue(interaction.guild, {
-      metadata: {
-        channel: interaction.channel,
-      },
-    })
+    const guildQueue = client.player.getQueue(interaction.guild.id)
 
-    // verify vc connection
+    let result = await client.player
+      .search(query, { requestedBy: interaction.user })
+      .catch(() => {})
+    if (!result || !result.tracks.length)
+      return await interaction.reply({
+        content: `❌ | Track **${query}** not found!`,
+      })
+
+    let queue
+    if (guildQueue) {
+      queue = guildQueue
+      queue.metadata = interaction
+    } else {
+      queue = await client.player.createQueue(interaction.guild, {
+        metadata: interaction,
+      })
+    }
+
     try {
       if (!queue.connection)
         await queue.connect(interaction.member.voice.channel)
-    } catch {
+    } catch (error) {
       queue.destroy()
       return await interaction.reply({
         content: "Could not join your voice channel!",
@@ -48,22 +61,14 @@ module.exports = {
       })
     }
 
-    await interaction.deferReply()
-    const track = await client.player
-      .search(query, {
-        requestedBy: interaction.user,
-      })
-      .then((x) => x.tracks[0])
+    result.playlist
+      ? queue.addTracks(result.tracks)
+      : queue.addTrack(result.tracks[0])
 
-    if (!track)
-      return await interaction.followUp({
-        content: `❌ | Track **${query}** not found!`,
-      })
+    if (!queue.playing) await queue.play()
 
-    queue.play(track)
-
-    return await interaction.followUp({
-      content: `⏱️ | Loading track **${track.title}**!`,
+    return await interaction.reply({
+      content: `Loading track **${result.tracks[0].title}**!`,
     })
   },
 }
