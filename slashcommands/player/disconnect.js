@@ -19,6 +19,6 @@ module.exports = {
 
     queue.destroy()
 
-    return interaction.reply(`${client.user.tag} disconnected`)
+    return await interaction.reply(`${client.user.tag} disconnected`)
   },
 }
