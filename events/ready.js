@@ -14,6 +14,6 @@ module.exports = {
 
     console.log(`Loaded ${client.slashcommands.size} slash command`)
     console.log(`${client.user.tag} is here :D`)
-    bot.client.user.setActivity("You ｏ(≧▼≦○〃", { type: "WATCHING" })
+    client.user.setActivity("You ｏ(≧▼≦○〃", { type: "WATCHING" })
   },
 }
