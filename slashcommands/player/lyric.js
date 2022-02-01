@@ -39,7 +39,7 @@ module.exports = {
     const queryFormated = query
       .toLowerCase()
       .replace(
-        /\(lyrics|lyric|official music video|official video hd|official video|audio|official|clip officiel|clip|extended|hq\)/g,
+        /\(lyrics|lyric|lirik|official music video|official video hd|official video|audio|official|clip officiel|clip|extended|hq\)/g,
         ""
       )
 
@@ -48,10 +48,10 @@ module.exports = {
     )
 
     if (!result || !result.lyrics)
-      return bot.say.errorMessage(
-        interaction,
-        "No lyrics were found for this song."
-      )
+      return await interaction.reply({
+        content: "No lyric found for this song",
+        ephemeral: false,
+      })
 
     const lyricEmbed = new MessageEmbed()
       .setColor("#34d8eb")
