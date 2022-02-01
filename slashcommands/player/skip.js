@@ -6,7 +6,6 @@ module.exports = {
   devOnly: false,
   run: async ({ client, interaction }) => {
     const queue = client.player.getQueue(interaction.guild.id)
-    const track = queue.tracks[0]
     const previousTrack = queue.previousTracks[queue.previousTracks.length - 1]
 
     if (
