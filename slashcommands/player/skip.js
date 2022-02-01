@@ -27,7 +27,7 @@ module.exports = {
 
     queue.skip()
 
-    return interaction.reply(
+    return await interaction.reply(
       `**${previousTrack.title}** skipped by <@${track.requestedBy.id}>`
     )
   },

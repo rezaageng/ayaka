@@ -64,6 +64,6 @@ module.exports = {
         } of ${queue.tracks.length}`
       )
 
-    return interaction.reply({ embeds: [queueEmbed] })
+    return await interaction.reply({ embeds: [queueEmbed] })
   },
 }
