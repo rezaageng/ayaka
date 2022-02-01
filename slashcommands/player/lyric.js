@@ -48,7 +48,7 @@ module.exports = {
     )
 
     if (!result || !result.lyrics)
-      return await interaction.reply({
+      return await interaction.followUp({
         content: "No lyric found for this song",
         ephemeral: false,
       })
