@@ -32,12 +32,6 @@ module.exports = {
         ephemeral: true,
       })
 
-    if (queue.tracks.length < 1 && queue.repeatMode !== 3)
-      return await interaction.reply({
-        content: "No more songs in the queue to skip.",
-        ephemeral: false,
-      })
-
     index = index - 1
 
     if (index < 0 || index > queue.tracks.length || !queue.tracks[index])
