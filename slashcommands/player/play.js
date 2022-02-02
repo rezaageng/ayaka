@@ -37,8 +37,8 @@ module.exports = {
       .search(query, { requestedBy: interaction.user })
       .catch(() => {})
     if (!result || !result.tracks.length)
-      return await interaction.reply({
-        content: `❌ | Track **${query}** not found!`,
+      return await interaction.followUp({
+        content: `Track **${query}** not found!`,
       })
 
     let queue
@@ -69,7 +69,7 @@ module.exports = {
         await queue.connect(interaction.member.voice.channel)
     } catch (error) {
       queue.destroy()
-      return await interaction.reply({
+      return await interaction.followUp({
         content: "Could not join your voice channel!",
         ephemeral: true,
       })
