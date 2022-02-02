@@ -52,6 +52,15 @@ module.exports = {
         leaveOnStop: true,
         leaveOnEmpty: true,
         leaveOnEmptyCooldown: 60000,
+        async onBeforeCreateStream(track, source, _queue) {
+          if (source === "youtube") {
+            return (
+              await client.playdl.stream(track.url, {
+                discordPlayerCompatibility: true,
+              })
+            ).stream
+          }
+        },
       })
     }
 

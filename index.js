@@ -1,5 +1,6 @@
 const Discord = require("discord.js")
 const { Player } = require("discord-player")
+const playdl = require("play-dl")
 require("dotenv").config()
 
 const client = new Discord.Client({
@@ -13,6 +14,7 @@ let bot = {
 }
 
 client.player = new Player(client)
+client.playdl = playdl
 
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()
