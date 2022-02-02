@@ -39,7 +39,7 @@ module.exports = {
     const queryFormated = query
       .toLowerCase()
       .replace(
-        /\(lyrics|lyric|lirik|official music video|official video hd|official video|audio|official|clip officiel|clip|extended|hq\)/g,
+        /\(lyrics|lyric|lirik|official music video|official video hd|official video|audio|official|clip officiel|clip|extended|hq|full version\)/g,
         ""
       )
 
