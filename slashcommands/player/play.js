@@ -52,7 +52,16 @@ module.exports = {
         leaveOnStop: true,
         leaveOnEmpty: true,
         leaveOnEmptyCooldown: 60000,
+        spotifyBridge: true,
         async onBeforeCreateStream(track, source, _queue) {
+          if (track.url.includes("spotify")) {
+            const convert = await client.playdl.search(track.title)
+            return (
+              await client.playdl.stream(convert[0].url, {
+                discordPlayerCompatibility: true,
+              })
+            ).stream
+          }
           if (source === "youtube") {
             return (
               await client.playdl.stream(track.url, {
