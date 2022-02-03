@@ -5,7 +5,7 @@ const lyricsClient = Lyrics.init()
 module.exports = {
   name: "lyric",
   description: "Show lyric",
-  cattegory: "player",
+  category: "player",
   permissions: [],
   devOnly: false,
   options: [

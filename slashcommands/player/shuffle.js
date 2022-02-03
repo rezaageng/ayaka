@@ -1,31 +1,27 @@
 const { MessageEmbed } = require("discord.js")
 
-const repeatMode = [
-  { name: "Off", value: 0 },
-  { name: "Repeat One", value: 1 },
-  { name: "Repeat All", value: 2 },
-  { name: "Autoplay", value: 3 },
-]
-
 module.exports = {
-  name: "repeat",
-  description: "Choose repeat mode",
+  name: "shuffle",
+  description: "Shuffle queue",
   category: "player",
   permissions: [],
   devOnly: false,
   options: [
     {
-      type: "NUMBER",
-      name: "mode",
-      description: "The song title to search lyrics",
-      choices: repeatMode,
+      type: "STRING",
+      name: "shuffle",
+      description: "What will you do?",
+      choices: [
+        { name: "On", value: "true" },
+        { name: "Off", value: "false" },
+      ],
       required: true,
     },
   ],
   run: async ({ client, interaction }) => {
     const queue = client.player.getQueue(interaction.guild.id)
-    const mode = interaction.options.getNumber("mode")
-    const repeatName = repeatMode.find((m) => mode === m.value)?.name
+    const result = interaction.options.getString("shuffle")
+    const rslt = result === "true" ? true : false
 
     if (!queue)
       return await interaction.reply({
@@ -43,14 +39,18 @@ module.exports = {
         ephemeral: true,
       })
 
-    const repeatEmbed = new MessageEmbed()
+    if (queue.tracks.length < 1)
+      return await interaction.reply({
+        content: "No more songs in the queue to shuffle.",
+        ephemeral: false,
+      })
+
+    const shuffleEmbed = new MessageEmbed()
       .setColor("#32a864")
-      .setTitle(
-        mode != 0 ? `${repeatName} on | 🔁` : `Repeat mode ${repeatName} | ❌`
-      )
+      .setTitle(rslt ? "Shuffle on | 🔀" : "Shuffle off | ❌")
 
-    queue.setRepeatMode(mode)
+    queue.shuffle(rslt)
 
-    return await interaction.reply({ embeds: [repeatEmbed] })
+    return await interaction.reply({ embeds: [shuffleEmbed] })
   },
 }
