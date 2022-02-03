@@ -1,7 +1,7 @@
 module.exports = {
   name: "remove",
   description: "Remove song",
-  cattegory: "player",
+  category: "player",
   permissions: [],
   devOnly: false,
   options: [

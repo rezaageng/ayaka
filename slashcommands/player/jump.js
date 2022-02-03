@@ -1,7 +1,7 @@
 module.exports = {
   name: "jump",
   description: "Jump to specific song",
-  cattegory: "player",
+  category: "player",
   permissions: [],
   devOnly: false,
   options: [

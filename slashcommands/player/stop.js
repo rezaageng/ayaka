@@ -1,7 +1,7 @@
 module.exports = {
   name: "stop",
   description: "Stop playing song",
-  cattegory: "player",
+  category: "player",
   permissions: [],
   devOnly: false,
   run: async ({ client, interaction }) => {

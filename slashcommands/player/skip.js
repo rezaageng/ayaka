@@ -1,7 +1,7 @@
 module.exports = {
   name: "skip",
   description: "Skip song",
-  cattegory: "player",
+  category: "player",
   permissions: [],
   devOnly: false,
   run: async ({ client, interaction }) => {
