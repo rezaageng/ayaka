@@ -2,14 +2,14 @@ const { MessageEmbed } = require("discord.js")
 
 module.exports = {
   name: "pause-resume",
-  description: "Pause the song",
+  description: "Pause or resume song",
   category: "player",
   permissions: [],
   options: [
     {
       type: "STRING",
       name: "pause-resume",
-      description: "The song title to search lyrics",
+      description: "What wil you do?",
       choices: [
         { name: "Pause", value: "true" },
         { name: "Resume", value: "false" },
