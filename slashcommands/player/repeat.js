@@ -46,7 +46,7 @@ module.exports = {
     const repeatEmbed = new MessageEmbed()
       .setColor("#32a864")
       .setTitle(
-        mode != 0 ? `${repeatName} on | ✅` : `Repeat mode ${repeatName} | ❌`
+        mode != 0 ? `${repeatName} on | 🔁` : `Repeat mode ${repeatName} | ❌`
       )
 
     queue.setRepeatMode(mode)
