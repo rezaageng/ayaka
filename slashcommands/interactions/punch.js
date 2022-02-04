@@ -1,3 +1,4 @@
+const { MessageAttachment } = require("discord.js")
 const { getGiphy } = require("../../util/apiRequest")
 
 module.exports = {
@@ -15,14 +16,14 @@ module.exports = {
     },
   ],
   run: async ({ client, interaction }) => {
-    const member = interaction.options.getMember("user")
-    const gif = getGiphy("anime punch")
-    const punchEmbed = client.embed
-      .setColor("#32a864")
-      .setDescription(`punching`)
+    const member = interaction.options.getMember("member")
+    const gif = await getGiphy("anime punch")
+    const attachment = new MessageAttachment(gif, "punch.gif")
 
-    console.log(member)
-
-    return await interaction.reply({ embeds: [punchEmbed] })
+    await interaction.deferReply()
+    return await interaction.followUp({
+      content: `Punching <@${member.id}>`,
+      files: [attachment],
+    })
   },
 }
