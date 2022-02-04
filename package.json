@@ -12,6 +12,7 @@
     "dependencies": {
         "@discord-player/extractor": "^3.0.2",
         "@discordjs/opus": "^0.7.0",
+        "axios": "^0.25.0",
         "canvas": "^2.9.0",
         "discord-player": "^5.2.2",
         "discord.js": "^13.4.0",
