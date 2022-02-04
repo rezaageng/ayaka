@@ -1,6 +1,7 @@
 module.exports = {
   name: "trackStart",
   run: async (bot, queue, track) => {
+    const { client } = bot
     const nowPlaying = client.embed
       .setColor("#0099ff")
       .setTitle(track.title)
