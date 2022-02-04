@@ -1,5 +1,3 @@
-const { MessageEmbed } = require("discord.js")
-
 module.exports = {
   name: "pause-resume",
   description: "Pause or resume song",
@@ -39,7 +37,7 @@ module.exports = {
         ephemeral: true,
       })
 
-    const resultEmbed = new MessageEmbed()
+    const resultEmbed = client.embed
       .setColor("#32a864")
       .setTitle(rslt ? "Song paused | ⏸️" : "Resume song | ▶️")
 

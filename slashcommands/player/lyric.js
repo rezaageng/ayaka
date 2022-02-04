@@ -1,4 +1,3 @@
-const { MessageEmbed } = require("discord.js")
 const { Lyrics } = require("@discord-player/extractor")
 const lyricsClient = Lyrics.init()
 
@@ -39,7 +38,7 @@ module.exports = {
     const queryFormated = query
       .toLowerCase()
       .replace(
-        /\(lyrics|lyric|lirik|official music video|official video hd|official video|audio|official|clip officiel|clip|extended|hq|full version\)/g,
+        /\(lyrics|lyric|lirik|official music video|official video hd|official video|audio|official|clip officiel|mv|pv|clip|extended|hq|full version\)/g,
         ""
       )
 
@@ -53,7 +52,7 @@ module.exports = {
         ephemeral: false,
       })
 
-    const lyricEmbed = new MessageEmbed()
+    const lyricEmbed = client.embed
       .setColor("#34d8eb")
       .setTitle(`${query}`)
       .setDescription(`${result.lyrics.slice(0, 4090)}...`)
