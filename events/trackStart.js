@@ -1,8 +1,9 @@
+const { MessageEmbed } = require("discord.js")
+
 module.exports = {
   name: "trackStart",
   run: async (bot, queue, track) => {
-    const { client } = bot
-    const nowPlaying = client.embed
+    const nowPlaying = new MessageEmbed()
       .setColor("#0099ff")
       .setTitle(track.title)
       .setURL(track.url)
