@@ -16,6 +16,7 @@ let bot = {
 client.player = new Player(client)
 client.playdl = playdl
 
+client.embed = new Discord.MessageEmbed()
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()
 client.slashcommands = new Discord.Collection()
