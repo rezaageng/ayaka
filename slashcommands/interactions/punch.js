@@ -17,13 +17,28 @@ module.exports = {
   ],
   run: async ({ client, interaction }) => {
     const member = interaction.options.getMember("member")
-    const gif = await getGiphy("anime punch")
-    const attachment = new MessageAttachment(gif, "punch.gif")
 
-    await interaction.deferReply()
-    return await interaction.followUp({
-      content: `Punching <@${member.id}>`,
-      files: [attachment],
-    })
+    for (let index = 0; ; index++) {
+      try {
+        const gif = await getGiphy("anime punch")
+        const attachment = new MessageAttachment(gif, "punch.gif")
+
+        await interaction.deferReply()
+        return await interaction.followUp({
+          content: `Punching <@${member.id}>`,
+          files: [attachment],
+        })
+      } catch (error) {
+        if (index < 5) {
+          continue
+        } else {
+          console.log(error)
+          return await interaction.followUp({
+            content: "Something wrong with me :(",
+            epheephemeral: true,
+          })
+        }
+      }
+    }
   },
 }

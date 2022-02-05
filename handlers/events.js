@@ -70,4 +70,8 @@ function initEvents(bot) {
   client.player.on("connectionError", (queue, error) => {
     triggerEventHandler(bot, "connectionError", queue, error)
   })
+
+  client.player.on("channelEmpty", (queue) => {
+    triggerEventHandler(bot, "channelEmpty", queue)
+  })
 }

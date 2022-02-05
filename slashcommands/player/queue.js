@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js")
+
 module.exports = {
   name: "queue",
   description: "Show songs queue",
@@ -48,7 +50,7 @@ module.exports = {
     const start = end - multiple
     const tracks = queue.tracks.slice(start, end)
 
-    const queueEmbed = client.embed
+    const queueEmbed = new MessageEmbed()
       .setColor("#32a864")
       .setTitle("Queue")
       .setDescription(

@@ -1,4 +1,5 @@
 const { Lyrics } = require("@discord-player/extractor")
+const { MessageEmbed } = require("discord.js")
 const lyricsClient = Lyrics.init()
 
 module.exports = {
@@ -52,7 +53,7 @@ module.exports = {
         ephemeral: false,
       })
 
-    const lyricEmbed = client.embed
+    const lyricEmbed = new MessageEmbed()
       .setColor("#34d8eb")
       .setTitle(`${query}`)
       .setDescription(`${result.lyrics.slice(0, 4090)}...`)
