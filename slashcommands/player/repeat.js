@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js")
+
 const repeatMode = [
   { name: "Off", value: 0 },
   { name: "Repeat One", value: 1 },
@@ -41,7 +43,7 @@ module.exports = {
         ephemeral: true,
       })
 
-    const repeatEmbed = client.embed
+    const repeatEmbed = new MessageEmbed()
       .setColor("#32a864")
       .setTitle(
         mode != 0 ? `${repeatName} on | 🔁` : `Repeat mode ${repeatName} | ❌`

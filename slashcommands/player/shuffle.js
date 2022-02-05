@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js")
+
 module.exports = {
   name: "shuffle",
   description: "Shuffle queue",
@@ -43,7 +45,7 @@ module.exports = {
         ephemeral: false,
       })
 
-    const shuffleEmbed = client.embed
+    const shuffleEmbed = new MessageEmbed()
       .setColor("#32a864")
       .setTitle(rslt ? "Shuffle on | 🔀" : "Shuffle off | ❌")
 
