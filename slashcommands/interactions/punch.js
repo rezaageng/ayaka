@@ -33,6 +33,10 @@ module.exports = {
           continue
         } else {
           console.log(error)
+          return await interaction.followUp({
+            content: "Something wrong with me :(",
+            epheephemeral: true,
+          })
         }
       }
     }
