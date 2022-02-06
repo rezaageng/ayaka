@@ -35,7 +35,7 @@ module.exports = {
           console.log(error)
           return await interaction.followUp({
             content: "Something wrong with me :(",
-            epheephemeral: true,
+            ephemeral: true,
           })
         }
       }
