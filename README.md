@@ -33,6 +33,8 @@ Setup [play-dl](https://play-dl.github.io/modules.html) cookie
 node cookie.js
 ```
 
+Click [here](https://github.com/play-dl/play-dl/tree/main/instructions#youtube-cookies) for more information about [play-dl](https://play-dl.github.io/modules.html) cookie
+
 Run the bot
 
 ```sh
