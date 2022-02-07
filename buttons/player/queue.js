@@ -2,21 +2,11 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js")
 
 module.exports = {
   name: "queue",
-  description: "Show songs queue",
   category: "player",
-  permissions: [],
-  devOnly: false,
-  options: [
-    {
-      name: "page",
-      description: "The page number of the queue",
-      type: "NUMBER",
-      required: false,
-    },
-  ],
-  run: async ({ client, interaction }) => {
+  run: async ({ client, interaction, params }) => {
+    const action = params[0]
     const queue = client.player.getQueue(interaction.guild.id)
-    let page = (await interaction.options.getNumber("page", false)) ?? 1
+    let page = params[1] ?? 1
 
     if (!queue)
       return await interaction.reply({
@@ -39,6 +29,9 @@ module.exports = {
         content: "There is currently no song in the queue.",
         ephemeral: true,
       })
+
+    if (action === "next") page++
+    if (action === "previous") page--
 
     const multiple = 10
 
@@ -82,9 +75,7 @@ module.exports = {
         .setStyle("PRIMARY")
     )
 
-    if (maxPages === 1) return await interaction.reply({ embeds: [queueEmbed] })
-
-    return await interaction.reply({
+    return await interaction.update({
       embeds: [queueEmbed],
       components: [queueButton],
     })
