@@ -9,7 +9,7 @@ Things that Ayaka can do :
 
 ## Installation
 
-**Node.js 16.9.0 or newer is required.**
+**[Node.js](https://nodejs.org/en/) 16.9.0 or newer is required.**
 
 Install all required dependencies
 
