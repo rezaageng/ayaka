@@ -19,8 +19,6 @@ module.exports = {
     const member = interaction.options.getMember("member")
     const gif = await getWaifu("hug")
 
-    console.log(gif)
-
     const attachment = new MessageAttachment(gif, "hug.gif")
     await interaction.deferReply()
     return await interaction.followUp({
