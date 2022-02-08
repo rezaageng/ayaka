@@ -4,7 +4,7 @@ const { getGiphy } = require("../../util/apiRequest")
 module.exports = {
   name: "punch",
   description: "Punch someone",
-  category: "player",
+  category: "interactions",
   permissions: [],
   devOnly: false,
   options: [

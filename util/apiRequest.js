@@ -14,4 +14,13 @@ async function getGiphy(query) {
   }
 }
 
-module.exports = { getGiphy }
+async function getWaifu(query) {
+  try {
+    const response = await axios.get(`https://api.waifu.pics/sfw/${query}`)
+    return response.data.url
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+module.exports = { getGiphy, getWaifu }
