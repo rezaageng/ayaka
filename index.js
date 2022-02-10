@@ -1,6 +1,7 @@
 const Discord = require("discord.js")
 const { Player } = require("discord-player")
 const playdl = require("play-dl")
+const { DiscordTogether } = require("discord-together")
 require("dotenv").config()
 
 const client = new Discord.Client({
@@ -15,6 +16,7 @@ let bot = {
 
 client.player = new Player(client)
 client.playdl = playdl
+client.discordTogether = new DiscordTogether(client)
 
 client.commands = new Discord.Collection()
 client.events = new Discord.Collection()

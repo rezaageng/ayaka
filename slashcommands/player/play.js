@@ -83,15 +83,20 @@ module.exports = {
         ephemeral: true,
       })
     }
+    try {
+      result.playlist
+        ? queue.addTracks(result.tracks)
+        : queue.addTrack(result.tracks[0])
 
-    result.playlist
-      ? queue.addTracks(result.tracks)
-      : queue.addTrack(result.tracks[0])
+      if (!queue.playing) await queue.play()
 
-    if (!queue.playing) await queue.play()
-
-    return await interaction.followUp({
-      content: `Loading track **${result.tracks[0].title}**!`,
-    })
+      return await interaction.followUp({
+        content: `Loading track **${result.tracks[0].title}**!`,
+      })
+    } catch (error) {
+      return await interaction.followUp({
+        content: `Something wrong with me!`,
+      })
+    }
   },
 }
