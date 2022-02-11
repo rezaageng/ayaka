@@ -5,7 +5,8 @@ Ayaka Bot is a simple discord bot that running on node.js
 Things that Ayaka can do :
 
 - Play Music
-- Punch Someone
+- Interaction
+- Activity
 
 ## Installation
 
