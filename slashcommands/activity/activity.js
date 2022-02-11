@@ -37,20 +37,12 @@ module.exports = {
         ephemeral: true,
       })
 
-    if (
-      interaction.guild.me.voice.channelId &&
-      interaction.member.voice.channelId !==
-        interaction.guild.me.voice.channelId
-    )
-      return await interaction.reply({
-        content: "You are not in my voice channel!",
-        ephemeral: true,
-      })
-
     client.discordTogether
       .createTogetherCode(channel, activity)
       .then(async (invite) => {
-        return interaction.reply(`${invite.code}`)
+        return interaction.reply(
+          `[Click to open ${activity} on <#${channel}>](${invite.code})`
+        )
       })
   },
 }
