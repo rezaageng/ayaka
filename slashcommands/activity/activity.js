@@ -1,16 +1,10 @@
 module.exports = {
   name: "activity",
   description: "Do activity",
-  category: "interactions",
+  category: "activity",
   permissions: [],
   devOnly: false,
   options: [
-    {
-      name: "channel",
-      description: "Select a voice channel",
-      type: "CHANNEL",
-      required: true,
-    },
     {
       name: "activity",
       description: "Select an activity",
@@ -23,20 +17,32 @@ module.exports = {
         { name: "Betrayal", value: "betrayal" },
         { name: "Word Snack", value: "wordsnack" },
         { name: "Letter Tile", value: "lettertile" },
+        { name: "Puttparty", value: "puttparty" },
+        { name: "Awkword", value: "awkword" },
+        { name: "Spellcast", value: "spellcast" },
+        { name: "Doodlecrew", value: "doodlecrew" },
+        { name: "Chess", value: "chess" },
+        { name: "Poker", value: "poker" },
       ],
       required: true,
     },
   ],
   run: async ({ client, interaction }) => {
-    const channel = interaction.options.getChannel("channel")
     const activity = interaction.options.getString("activity")
-    if (channel.type !== "GUILD_VOICE")
-      return interaction.reply("This is not a voice channel.")
+    const channel = interaction.member.voice.channelId
+
+    if (!interaction.member.voice.channelId)
+      return await interaction.reply({
+        content: "You are not in a voice channel!",
+        ephemeral: true,
+      })
 
     client.discordTogether
-      .createTogetherCode(channel.id, activity)
+      .createTogetherCode(channel, activity)
       .then(async (invite) => {
-        return interaction.reply(`${invite.code}`)
+        return interaction.reply(
+          `[Click to open ${activity} on <#${channel}>](${invite.code})`
+        )
       })
   },
 }
