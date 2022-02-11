@@ -94,6 +94,7 @@ module.exports = {
         content: `Loading track **${result.tracks[0].title}**!`,
       })
     } catch (error) {
+      console.log(error)
       return await interaction.followUp({
         content: `Something wrong with me!`,
       })
