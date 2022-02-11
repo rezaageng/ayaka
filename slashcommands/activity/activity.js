@@ -1,7 +1,7 @@
 module.exports = {
   name: "activity",
   description: "Do activity",
-  category: "interactions",
+  category: "activity",
   permissions: [],
   devOnly: false,
   options: [
