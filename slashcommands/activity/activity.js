@@ -6,12 +6,6 @@ module.exports = {
   devOnly: false,
   options: [
     {
-      name: "channel",
-      description: "Select a voice channel",
-      type: "CHANNEL",
-      required: true,
-    },
-    {
       name: "activity",
       description: "Select an activity",
       type: "STRING",
@@ -28,13 +22,27 @@ module.exports = {
     },
   ],
   run: async ({ client, interaction }) => {
-    const channel = interaction.options.getChannel("channel")
     const activity = interaction.options.getString("activity")
-    if (channel.type !== "GUILD_VOICE")
-      return interaction.reply("This is not a voice channel.")
+    const channel = interaction.member.voice.channelId
+
+    if (!interaction.member.voice.channelId)
+      return await interaction.reply({
+        content: "You are not in a voice channel!",
+        ephemeral: true,
+      })
+
+    if (
+      interaction.guild.me.voice.channelId &&
+      interaction.member.voice.channelId !==
+        interaction.guild.me.voice.channelId
+    )
+      return await interaction.reply({
+        content: "You are not in my voice channel!",
+        ephemeral: true,
+      })
 
     client.discordTogether
-      .createTogetherCode(channel.id, activity)
+      .createTogetherCode(channel, activity)
       .then(async (invite) => {
         return interaction.reply(`${invite.code}`)
       })
