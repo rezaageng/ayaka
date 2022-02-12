@@ -1,12 +1,11 @@
 # ❄️ Ayaka Bot 🌸
 
-Ayaka Bot is a simple discord bot that running on node.js
+Ayaka Bot is a discord bot that running on node.js
 
-Things that Ayaka can do :
-
-- Play Music
-- Interaction
-- Activity
+- [Installation](#%E2%9D%84%EF%B8%8F-ayaka-bot-%F0%9F%8C%B8)
+- [Play Music](#%F0%9F%8E%B5-play-music)
+- [Interactions](#%F0%9F%91%8B-interactions)
+- [Activity](#%F0%9F%95%B9%EF%B8%8F-activity)
 
 ## 🔧 Installation
 
@@ -41,3 +40,59 @@ Run the bot
 ```sh
 npm start
 ```
+
+## 🎵 Play Music
+
+Commands list:
+
+- /play
+- /pause-resume
+- /skip
+- /queue
+- /disconnect
+- /jump
+- /lyric
+- /now-playing
+- /remove
+- /repeat
+- /shuffle
+- /stop
+
+## 👋 Interactions
+
+Commands list:
+
+- /blush
+- /bonk
+- /cry
+- /dance
+- /hug
+- /kick-gif
+- /pat
+- /punch
+- /slap
+- /smug
+- /wink
+
+## 🕹️ Activity
+
+Command:
+
+- /activity
+
+Free activities:
+
+- YouTube Together
+- Sketch Heads (and Doodle Crew)
+- Word Snacks
+- Betrayal.io
+- Fishington.io
+
+Boost lv 1:
+
+- Poker Night
+- Chess In The Park
+- Checkers In The Park
+- Ocho
+- Letter League
+- SpellCast
