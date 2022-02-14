@@ -1,46 +1,53 @@
+const channelId = "942685295944532028"
+
 module.exports = {
-    name: "messageCreate",
-    run: async (bot, message) => {
-        const { client, prefix, owners } = bot
+  name: "messageCreate",
+  run: async (bot, message) => {
+    const { client, prefix, owners } = bot
 
-        if (!message.guild) return
-        if (message.author.bot) return
-        if (!message.content.startsWith(prefix)) return
+    if (!message.guild)
+      return client.channels.cache.get(channelId).send({
+        content: `${message.author.tag}: ${message.content}`,
+        files: [...message.attachments.values()],
+      })
 
-        const args = message.content.slice(prefix.length).trim().split(/ +/g)
-        const cmdstr = args.shift().toLowerCase()
+    if (message.author.bot) return
+    if (!message.content.startsWith(prefix)) return
 
-        let command = client.commands.get(cmdstr)
-        if (!command) return
+    console.log(message)
 
-        let member = message.member
+    const args = message.content.slice(prefix.length).trim().split(/ +/g)
+    const cmdstr = args.shift().toLowerCase()
 
-        if (command.devOnly && !owners.includes(member.id)) {
-            return message.reply(
-                "This command is only available to the bot developers"
-            )
-        }
+    let command = client.commands.get(cmdstr)
+    if (!command) return
 
-        if (
-            command.permission &&
-            member.permissions.missing(command.permissions) !== 0
-        ) {
-            return message.reply(
-                "You do not have permission to use this command"
-            )
-        }
+    let member = message.member
 
-        try {
-            await command.run({ ...bot, message, args })
-        } catch (err) {
-            let errMsg = err.toString()
+    if (command.devOnly && !owners.includes(member.id)) {
+      return message.reply(
+        "This command is only available to the bot developers"
+      )
+    }
 
-            if (errMsg.startsWith("?")) {
-                errMsg = errMsg.slice(1)
-                await message.reply(errMsg)
-            } else {
-                console.error(err)
-            }
-        }
-    },
+    if (
+      command.permission &&
+      member.permissions.missing(command.permissions) !== 0
+    ) {
+      return message.reply("You do not have permission to use this command")
+    }
+
+    try {
+      await command.run({ ...bot, message, args })
+    } catch (err) {
+      let errMsg = err.toString()
+
+      if (errMsg.startsWith("?")) {
+        errMsg = errMsg.slice(1)
+        await message.reply(errMsg)
+      } else {
+        console.error(err)
+      }
+    }
+  },
 }

@@ -5,7 +5,14 @@ const { DiscordTogether } = require("discord-together")
 require("dotenv").config()
 
 const client = new Discord.Client({
-  intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS", "GUILD_VOICE_STATES"],
+  partials: ["CHANNEL"],
+  intents: [
+    "GUILDS",
+    "GUILD_MESSAGES",
+    "GUILD_MEMBERS",
+    "GUILD_VOICE_STATES",
+    "DIRECT_MESSAGES",
+  ],
 })
 
 let bot = {
