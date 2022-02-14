@@ -22,8 +22,8 @@ module.exports = {
     const member = interaction.options.getMember("member")
     const message = interaction.options.getString("message")
 
-    if (client.user.id === member.id)
-      return await interaction.reply("Can't send message to myself!")
+    if (member.user.bot)
+      return await interaction.reply("Can't send message to bot!")
 
     if (owners !== interaction.member.id)
       return await interaction.reply({
