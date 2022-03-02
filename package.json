@@ -20,7 +20,7 @@
         "dotenv": "^10.0.0",
         "ffmpeg-static": "^4.4.1",
         "opusscript": "^0.0.8",
-        "play-dl": "^1.8.4"
+        "play-dl": "^1.8.9"
     },
     "repository": {
         "type": "git",
