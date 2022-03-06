@@ -55,7 +55,9 @@ module.exports = {
         spotifyBridge: true,
         async onBeforeCreateStream(track, source, _queue) {
           if (track.url.includes("spotify")) {
-            const convert = await client.playdl.search(track.title)
+            const convert = await client.playdl.search(
+              `${track.title} ${track.artist}`
+            )
             return (
               await client.playdl.stream(convert[0].url, {
                 discordPlayerCompatibility: true,
